@@ -3,25 +3,28 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Languages } from "@/types/languages";
+import { useTranslation } from "react-i18next";
 
 export default function LanguageDropDown(){
     const [  visible , setVisibility ] =  useState(false)
     const [  language , setLanguage ] =  useState("GE");
 
+    const { t, i18n } = useTranslation();
+
     const languages:Languages[] = [
         {
             name:"Georgian",
-            shortName:"GE",
+            shortName:"ge",
             flagIcon:"/flags/ge.svg"
         },
         {
             name:"English",
-            shortName:"EN",
+            shortName:"en",
             flagIcon:"/flags/gb.svg"
         },
         {
             name:"Russian",
-            shortName:"RU",
+            shortName:"ru",
             flagIcon:"/flags/ru.svg"
         },
     ]
@@ -36,6 +39,7 @@ export default function LanguageDropDown(){
     }
 
     function selectLanguage(language:string){
+        i18n.changeLanguage(language);
         setLanguage(language);
         closeDropdown();
     }
@@ -55,7 +59,7 @@ export default function LanguageDropDown(){
             </button>
             {
                 visible && (
-                <ul className="absolute top-5 right-0.5 rounded-md py-2 px-3 shadow-md min-w-fit w-32 bg-purple-50">
+                <ul className="absolute top-5 right-0.5 rounded-md py-2 px-3 shadow-md min-w-fit w-40 bg-purple-50">
                     {
                         languages.map((language) => (
                             <li
@@ -73,7 +77,7 @@ export default function LanguageDropDown(){
                                     alt={language.name + " flag"}
                                     />
                                     <p>
-                                        {language.name}
+                                        {t(language.name)}
                                     </p>
                                 </button>
                             </li>
