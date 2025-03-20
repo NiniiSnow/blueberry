@@ -64,7 +64,7 @@ export default function LanguageDropDown(){
                         languages.map((language) => (
                             <li
                             key={language.name}
-                            className="w-full pt-1"
+                            className="w-full pt-1 hover:bg-gray-300 p-1 rounded-md"
                             >
                                 <button
                                 className="flex flex-row gap-1 cursor-pointer"

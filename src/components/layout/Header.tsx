@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import LanguageDropDown from "../ui/LanguageDropdown";
+import BurgerMenu from "../ui/BurgerMenu";
 
 export default function Header (){
     return (
@@ -15,7 +16,7 @@ export default function Header (){
                 alt="main logo blueberry"
                 />
             </Link>
-            <div className="font-semibold flex gap-8">
+            <div className="font-semibold flex gap-8 max-md:hidden">
                 <Link
                 href={"/"}
                 className="text-blue-main hover:text-green-main"
@@ -41,22 +42,23 @@ export default function Header (){
                 width={24}
                 height={24}
                 alt="search icon"
-                className="cursor-pointer"
+                className="cursor-pointer max-md:hidden"
                 />
                 <Image
                 src={"/icons/account.svg"}
                 width={24}
                 height={24}
                 alt="account icon"
-                className="cursor-pointer"
+                className="cursor-pointer max-md:hidden"
                 />
                 <Image
                 src={"/icons/cart.svg"}
                 width={24}
                 height={24}
                 alt="cart icon"
-                className="cursor-pointer"
+                className="cursor-pointer max-md:hidden"
                 />
+                <BurgerMenu/>
                 <LanguageDropDown/>
             </div>
         </div>
