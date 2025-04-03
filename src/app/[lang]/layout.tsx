@@ -1,3 +1,4 @@
+import React, { ReactElement } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -21,17 +22,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactElement<{ lang: string }>;
+  params: { lang: string }; 
 }>) {
+  const lang = params.lang || "en"; 
+
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <TranslationProvider>
-          <Layout>
-            {children}
+        <TranslationProvider lang={lang}>
+          <Layout language={lang}>
+            {React.cloneElement(children, { lang })}
           </Layout>
         </TranslationProvider>
       </body>

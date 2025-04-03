@@ -4,26 +4,27 @@ import { useState } from "react"
 import Image from "next/image"
 import { Languages } from "@/types/languages";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
 
 export default function LanguageDropDown(){
     const [  visible , setVisibility ] =  useState(false)
-    const [  language , setLanguage ] =  useState("GE");
+    const router = useRouter()
 
     const { t, i18n } = useTranslation();
 
     const languages:Languages[] = [
         {
-            name:"Georgian",
+            name:"georgian",
             shortName:"ge",
             flagIcon:"/flags/ge.svg"
         },
         {
-            name:"English",
+            name:"english",
             shortName:"en",
             flagIcon:"/flags/gb.svg"
         },
         {
-            name:"Russian",
+            name:"russian",
             shortName:"ru",
             flagIcon:"/flags/ru.svg"
         },
@@ -31,16 +32,15 @@ export default function LanguageDropDown(){
 
     function onToggle(){
         setVisibility(!visible)
-        console.log(">> visibility", visible)
     }
 
     function closeDropdown(){
         setVisibility(false)
     }
 
-    function selectLanguage(language:string){
-        i18n.changeLanguage(language);
-        setLanguage(language);
+    function selectLanguage(selectedLanguage:string){
+        i18n.changeLanguage(selectedLanguage);
+        router.push(`/${selectedLanguage}`); 
         closeDropdown();
     }
 

@@ -1,12 +1,13 @@
 {
-    "welcome": "добро пожаловать",
-    "Georgian": "грузинский",
-    "English": "английский",
-    "Russian": "русский",
-    "about":"о нас",
-    "home":"главный",
-    "contact": "контакт",
-    "shop": "магазин",
-    "search":"поиск",
-    "login":"логин"
+    "welcome": "Добро пожаловать в Blueberry Gardens!",
+    "georgian": "Грузинский",
+    "english": "Английский",
+    "russian": "Русский",
+    "about": "О нас",
+    "home": "Главная",
+    "contact": "Контакты",
+    "shop": "Магазин",
+    "login": "Войти",
+    "logout": "Выйти",
+    "signup": "Регистрация"
 }

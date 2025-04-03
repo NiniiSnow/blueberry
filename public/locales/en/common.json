@@ -1,12 +1,15 @@
 {
-    "welcome": "Welcome to Blueberry Gardens!",
-    "Georgian": "Georgian",
-    "English": "English",
-    "Russian": "Russian",
-    "about":"About us",
-    "home":"Home",
-    "contact": "Contact",
-    "shop": "Shop",
-    "search":"Search",
-    "login":"Login"
-  }
+  "welcome": "Welcome to Blueberry Gardens!",
+  "georgian": "Georgian",
+  "english": "English",
+  "russian": "Russian",
+  "about": "About us",
+  "home": "Home",
+  "contact": "Contact",
+  "shop": "Shop",
+  "search": "Search",
+  "login": "Login",
+  "logout": "Logout",
+  "signup": "Sign Up"
+
+}
