@@ -8,7 +8,9 @@
 
 @theme {
   --color-blue-main: #2d318d;
-  --color-green-main:#82bc1a
+  --color-green-main:#82bc1a;
+  --color-green-main-2:#224809;
+  --color-pinkish-purple:#a20067;
 }
 
 @theme inline {

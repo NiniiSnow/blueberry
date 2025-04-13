@@ -3,7 +3,6 @@ import Image from "next/image";
 import LanguageDropDown from "../ui/LanguageDropdown";
 import BurgerMenu from "../ui/BurgerMenu";
 import { getServerTranslation } from "@/utils/getServerTranslation";
-import { headers } from "next/headers";
 
 export default async function Header({ lang }: { lang: string }) {
   const headerTranslations = await getServerTranslation(lang, "common");
@@ -23,16 +22,28 @@ export default async function Header({ lang }: { lang: string }) {
           {headerTranslations ? headerTranslations("home") : "Home"}
         </Link>
         <Link
+          href={`/${lang}/about`}
+          className="text-blue-main hover:text-green-main"
+        >
+          {headerTranslations ? headerTranslations("aboutUs") : "About"}
+        </Link>
+        <Link
+          href={`/${lang}/blogs`}
+          className="text-blue-main hover:text-green-main"
+        >
+          {headerTranslations ? headerTranslations("blog") : "Blogs"}
+        </Link>
+        <Link
+          href={`/${lang}/recipes`}
+          className="text-blue-main hover:text-green-main"
+        >
+          {headerTranslations ? headerTranslations("recipes") : "Recipes"}
+        </Link>
+        <Link
           href={`/${lang}/contact`}
           className="text-blue-main hover:text-green-main"
         >
           {headerTranslations ? headerTranslations("contact") : "Contact"}
-        </Link>
-        <Link
-          href={`/${lang}/about`}
-          className="text-blue-main hover:text-green-main"
-        >
-          {headerTranslations ? headerTranslations("about") : "About"}
         </Link>
       </div>
       <div className="pr-8 flex gap-8">

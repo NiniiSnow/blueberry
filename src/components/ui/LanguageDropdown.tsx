@@ -45,7 +45,7 @@ export default function LanguageDropDown(){
     }
 
     return(
-        <div className="flex items-center relative">
+        <div className="flex items-center relative z-50">
             <button
             onClick={onToggle}
             >

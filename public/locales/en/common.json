@@ -3,13 +3,21 @@
   "georgian": "Georgian",
   "english": "English",
   "russian": "Russian",
-  "about": "About us",
+  "aboutUs": "About us",
   "home": "Home",
   "contact": "Contact",
+  "blog": "Blogs",
+  "recipes": "Recipes",
   "shop": "Shop",
   "search": "Search",
   "login": "Login",
   "logout": "Logout",
-  "signup": "Sign Up"
-
+  "signup": "Sign Up",
+  "ourProducts": "Our Products",
+  "ourProductsDescription": "Our blueberries are grown using sustainable farming practices and are hand-picked to ensure the highest quality.",
+  "recipesHeader": "Grab a Boost of Blue",
+  "recipesSectionDescription": "Colorful, healthy and delicious, blueberries give you confidence you're doing something right in every bite. Whether you're a busy parent looking for convenient, tasty ways to inspire healthy eating, the active weekender seeking versatile and refreshing grab-and-go snacks, or the trendsetter searching for the coolest cocktail or unexpected food/flavor pairings, blueberries are your go-to.",
+  "recipesButtonDescription": "Discover Delicious Ideas",
+  "seeMore": "See more",
+  "aboutUsShortDescription": "Blueberry Gardens is a family-owned farm located in the heart of Georgia. We are dedicated to growing the highest quality blueberries and providing our customers with the freshest, most delicious berries possible."
 }
