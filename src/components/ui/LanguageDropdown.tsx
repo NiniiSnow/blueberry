@@ -4,11 +4,12 @@ import { useState } from "react"
 import Image from "next/image"
 import { Languages } from "@/types/languages";
 import { useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function LanguageDropDown(){
     const [  visible , setVisibility ] =  useState(false)
     const router = useRouter()
+    const pathname = usePathname()
 
     const { t, i18n } = useTranslation();
 
@@ -39,8 +40,12 @@ export default function LanguageDropDown(){
     }
 
     function selectLanguage(selectedLanguage:string){
+        const segments = pathname.split('/');
+        segments[1] = selectedLanguage;
+        const newPath = segments.join('/');
+
         i18n.changeLanguage(selectedLanguage);
-        router.push(`/${selectedLanguage}`); 
+        router.push(newPath); 
         closeDropdown();
     }
 

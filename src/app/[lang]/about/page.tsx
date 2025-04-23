@@ -1,15 +1,16 @@
 import { getServerTranslation } from "@/utils/getServerTranslation";
 import Image from "next/image";
 import ImageSwiper from "@/components/ui/ImageSwiper";
+import Map from '@/components/ui/Map';
 
 export default async function About({ params }: { params: { lang: string } }){
-    const { lang } = params;
+    const { lang } = await params;
     const aboutText = await getServerTranslation(lang, "common");
     
     const images = [
       {
-        src: "/images/blueberry_garden_scene.webp",
-        alt: "Blueberry field cover"
+        src: "/images/cxunkur.webp",
+        alt: "Blueberry field from above"
       },
       {
         src: "/images/blueberry_in_hands.webp",
@@ -117,94 +118,51 @@ export default async function About({ params }: { params: { lang: string } }){
                 </div>
             </section>
 
-            {/* <section className="text-gray-600 body-font">
-              <div className="container px-5 py-24 mx-auto flex flex-wrap">
-                <div className="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-                  <Image
-                    src={"/images/blueberry_in_hands.webp"}
-                    width={500}
-                    height={500}
-                    alt="Blueberry field"
-                    className="object-cover object-center h-full w-full">
-                  </Image>
-                </div>
-                <div className="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
-                  <div className="flex flex-col mb-10 lg:items-start items-center">
-                    <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
-                      <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                      </svg>
-                    </div>
-                    <div className="flex-grow">
-                      <h2 className="text-gray-900 text-lg title-font font-medium mb-3">Shooting Stars</h2>
-                      <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col mb-10 lg:items-start items-center">
-                    <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
-                      <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                        <circle cx="6" cy="6" r="3"></circle>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-                      </svg>
-                    </div>
-                    <div className="flex-grow">
-                      <h2 className="text-gray-900 text-lg title-font font-medium mb-3">The Catalyzer</h2>
-                      <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col mb-10 lg:items-start items-center">
-                    <div className="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5">
-                      <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24">
-                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                      </svg>
-                    </div>
-                    <div className="flex-grow">
-                      <h2 className="text-gray-900 text-lg title-font font-medium mb-3">Neptune</h2>
-                      <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section> */}
-
-
-            {/* About Company Section */}
-            {/* <section className="py-10 md:py-20 bg-gray-50" id="aboutCompany">
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row gap-12 items-center">
-                        <div className="md:w-1/2 space-y-6">
-                            <h2 className="text-3xl font-bold text-blue-main">
-                                {aboutText ? aboutText("aboutCompany") : "About Company"}
-                            </h2>
-                            <p className="text-gray-700 text-lg leading-relaxed">
-                                {aboutText ? aboutText("aboutCompanyDescription") : "Lorem ipsum..."}
-                            </p>
-                        </div>
-                        <div className="md:w-1/2">
-                            <Image
-                                src="/images/blueberry03.webp"
-                                width={500}
-                                height={500}
-                                alt="Company image"
-                                className="rounded-lg shadow-xl"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-
             {/* Gallery Section */}
             <section>
-                <div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-blue-main text-center my-12">
-                        {aboutText ? aboutText("gallery") : "Our Gallery"}
+                <div className="flex">
+                    <div className="w-1/2 ">
+                      <h2 className="text-3xl md:text-4xl font-bold text-blue-main text-center my-12">
+                          {aboutText ? aboutText("gallery") : "Our Gallery"}
+                      </h2>
+                      <p className="text-gray-700 text-lg leading-relaxed text-center mb-8 lg:w-1/2 mx-auto">
+                          {aboutText("galleryDescription")}
+                      </p>
+                    </div>
+                    <div className="w-1/2 flex justify-center items-center">
+
+                      <ImageSwiper images={images} />
+                    </div>
+                </div>
+            </section>
+
+            {/* Location Section */}
+            <section className="py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-blue-main text-center mb-8">
+                        {aboutText ? aboutText("location") : "Our Locations"}
                     </h2>
-                    <p className="text-gray-700 text-lg leading-relaxed text-center mb-8 lg:w-1/2 mx-auto">
-                        {aboutText("galleryDescription")}
+                    <p className="text-gray-700 text-lg text-center mb-12 max-w-2xl mx-auto">
+                        {aboutText ? aboutText("locationDescription") : 
+                        "Visit our blueberry gardens in Georgia. Click on the markers to get directions."}
                     </p>
-                    <ImageSwiper images={images} />
+                    {/* <div className="rounded-lg overflow-hidden shadow-xl">
+                        <Map />
+                    </div> */}
+                    <div className="grid md:grid-cols-2 gap-8 mt-12">
+                        <div className="text-center p-6 bg-white rounded-lg shadow-md">
+                            <h3 className="text-xl font-semibold text-blue-main mb-2">Cxunkuri</h3>
+                            <p className="text-gray-600">
+                                {aboutText ? aboutText("cxunkuriAddress") : "Cxunkuri, Imereti Region"}
+                            </p>
+                        </div>
+                        <div className="text-center p-6 bg-white rounded-lg shadow-md">
+                            <h3 className="text-xl font-semibold text-blue-main mb-2">Ternali</h3>
+                            <p className="text-gray-600">
+                                {aboutText ? aboutText("potiAddress") : "Ternali"}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

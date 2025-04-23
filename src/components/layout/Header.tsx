@@ -8,7 +8,7 @@ export default async function Header({ lang }: { lang: string }) {
   const headerTranslations = await getServerTranslation(lang, "common");
   
   return (
-    <div className="flex flex-row justify-between items-center bg-white shadow-md max-h-20">
+    <div className="flex flex-row justify-between items-center bg-white shadow-md max-h-20 sticky top-0 z-50">
       <Link href={`/${lang}`}>
         <Image
           src={"/logos/blueberry-logo.svg"}

@@ -40,7 +40,7 @@ export default function ImageSwiper({ images }: ImageSliderProps) {
               className="object-cover"
               priority={index === 0}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-main/60 to-transparent" />
+            {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-main/60 to-transparent" /> */}
           </div>
         </SwiperSlide>
       ))}

@@ -20,7 +20,9 @@ const footerTranslations = await getServerTranslation(lang, "common");
             </div>
             <div className="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
               <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 className="title-font  text-gray-900 tracking-widest text-sm mb-3 font-semibold">EXPLORE</h2>
+                <h2 className="title-font  text-gray-900 tracking-widest text-sm mb-3 font-semibold uppercase">
+                { footerTranslations("explore") }
+                </h2>
                 <nav className="list-none mb-10">
                   <li>
                     <Link
@@ -57,7 +59,9 @@ const footerTranslations = await getServerTranslation(lang, "common");
                 </nav>
               </div>
               <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-3">TOP RECIPES</h2>
+                <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-3 uppercase">
+                  { footerTranslations("topRecipes") }
+                </h2>
                 <nav className="list-none mb-10">
                   <li>
                     <a className="text-gray-600 hover:text-gray-800">First Link</a>
@@ -91,19 +95,18 @@ const footerTranslations = await getServerTranslation(lang, "common");
                 </nav>
               </div>
               <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-3">
+                { footerTranslations("contactInfo") }
+                </h2>
                 <nav className="list-none mb-10">
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                    <a className="text-gray-600 hover:text-gray-800">+9873478327</a>
                   </li>
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                    <a className="text-gray-600 hover:text-gray-800">blueberrymagaria@gmail.com</a>
                   </li>
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-                  </li>
-                  <li>
-                    <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                    <a className="text-gray-600 hover:text-gray-800">@Tsklatubo</a>
                   </li>
                 </nav>
               </div>
