@@ -3,7 +3,7 @@ import ContactForm from "@/components/forms/ContactForm";
 import Image from "next/image";
 
 export default async function Contact({ params }: { params: { lang: string } }) {
-  const { lang } = params;
+  const { lang } = await params;
   const contactText = await getServerTranslation(lang, "common");
 
   return (
