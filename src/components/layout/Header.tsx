@@ -47,7 +47,7 @@ export default async function Header({ lang }: { lang: string }) {
         </Link>
       </div>
       <div className="pr-8 flex gap-8">
-        <Image
+        {/* <Image
           src={"/icons/search-icon.svg"}
           width={24}
           height={24}
@@ -67,7 +67,7 @@ export default async function Header({ lang }: { lang: string }) {
           height={24}
           alt="cart icon"
           className="cursor-pointer max-md.hidden"
-        />
+        /> */}
         <BurgerMenu />
         <LanguageDropDown />
       </div>

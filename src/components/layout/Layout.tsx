@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -13,7 +13,7 @@ export default function Layout({
     return (
         <div className="flex flex-col min-h-screen">
           <Header lang={language}/>
-          <main className="flex-grow">{children}</main>
+            <main className="flex-grow">{children}</main>
           <Footer lang={language}/>
         </div>
       );
