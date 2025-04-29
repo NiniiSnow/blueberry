@@ -8,7 +8,12 @@
 
 @theme {
   --color-blue-main: #2d318d;
-  --color-green-main:#82bc1a
+  --color-blue-100: #355e87;
+  --color-blue-200: #2f398d;
+  --color-blue-300: #193f5a;
+  --color-green-main:#82bc1a;
+  --color-green-main-2:#224809;
+  --color-pinkish-purple:#a20067;
 }
 
 @theme inline {
@@ -26,7 +31,21 @@
 }
 
 body {
-  background: whitesmoke;
+  /* background: whitesmoke; */
   color: black;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Swiper custom styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+}
+
+.swiper-pagination-bullet {
+  background: white !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-blue-main) !important;
 }

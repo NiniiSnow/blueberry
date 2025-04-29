@@ -3,45 +3,54 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Languages } from "@/types/languages";
+import { useTranslation } from "react-i18next";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function LanguageDropDown(){
     const [  visible , setVisibility ] =  useState(false)
-    const [  language , setLanguage ] =  useState("GE");
+    const router = useRouter()
+    const pathname = usePathname()
+
+    const { t, i18n } = useTranslation();
 
     const languages:Languages[] = [
         {
-            name:"Georgian",
-            shortName:"GE",
+            name:"georgian",
+            shortName:"ge",
             flagIcon:"/flags/ge.svg"
         },
         {
-            name:"English",
-            shortName:"EN",
+            name:"english",
+            shortName:"en",
             flagIcon:"/flags/gb.svg"
         },
         {
-            name:"Russian",
-            shortName:"RU",
+            name:"russian",
+            shortName:"ru",
             flagIcon:"/flags/ru.svg"
         },
     ]
 
     function onToggle(){
         setVisibility(!visible)
-        console.log(">> visibility", visible)
     }
 
     function closeDropdown(){
         setVisibility(false)
     }
 
-    function selectLanguage(language:string){
-        setLanguage(language);
+    function selectLanguage(selectedLanguage:string){
+        const segments = pathname.split('/');
+        segments[1] = selectedLanguage;
+        const newPath = segments.join('/');
+
+        i18n.changeLanguage(selectedLanguage);
+        router.push(newPath); 
         closeDropdown();
     }
 
     return(
-        <div className="flex items-center relative">
+        <div className="flex items-center relative z-50">
             <button
             onClick={onToggle}
             >
@@ -55,12 +64,12 @@ export default function LanguageDropDown(){
             </button>
             {
                 visible && (
-                <ul className="absolute top-5 right-0.5 rounded-md py-2 px-3 shadow-md min-w-fit w-32 bg-purple-50">
+                <ul className="absolute top-5 right-0.5 rounded-md py-2 px-3 shadow-md min-w-fit w-40 bg-purple-50">
                     {
                         languages.map((language) => (
                             <li
                             key={language.name}
-                            className="w-full pt-1"
+                            className="w-full pt-1 hover:bg-gray-300 p-1 rounded-md"
                             >
                                 <button
                                 className="flex flex-row gap-1 cursor-pointer"
@@ -73,7 +82,7 @@ export default function LanguageDropDown(){
                                     alt={language.name + " flag"}
                                     />
                                     <p>
-                                        {language.name}
+                                        {t(language.name)}
                                     </p>
                                 </button>
                             </li>
