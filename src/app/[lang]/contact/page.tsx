@@ -43,7 +43,7 @@ export default async function Contact({ params }: { params: { lang: string } }) 
                   <h3 className="font-semibold text-blue-main">
                     {contactText ? contactText("phone") : "Phone"}
                   </h3>
-                  <p className="text-gray-600">+995 555 12 34 56</p>
+                  <p className="text-gray-600">+995 568 20 99 33</p>
                 </div>
               </div>
 
@@ -55,7 +55,7 @@ export default async function Contact({ params }: { params: { lang: string } }) 
                   <h3 className="font-semibold text-blue-main">
                     {contactText ? contactText("email") : "Email"}
                   </h3>
-                  <p className="text-gray-600">info@blueberrygardens.ge</p>
+                  <p className="text-gray-600">blueberrygardens2021@gmail.com</p>
                 </div>
               </div>
             </div>
