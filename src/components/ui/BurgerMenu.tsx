@@ -36,7 +36,6 @@ export default function BurgerMenu(){
 export function NavigationMenu(){
     const { t } = useTranslation();
 
-    const [ searchText , setSearchText] = useState('')
 
     return(
         <div className="absolute top-20  left-0 bg-white w-full h-fit py-6">

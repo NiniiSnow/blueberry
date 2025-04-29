@@ -1,7 +1,7 @@
 import { getServerTranslation } from "@/utils/getServerTranslation";
 import Image from "next/image";
 import ImageSwiper from "@/components/ui/ImageSwiper";
-import Map from '@/components/ui/Map';
+// import Map from '@/components/ui/Map';
 
 export default async function About({ params }: { params: { lang: string } }){
     const { lang } = await params;

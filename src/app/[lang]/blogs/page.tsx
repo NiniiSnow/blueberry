@@ -13,7 +13,7 @@ export default async function Blog({ params }: { params: { lang: string } }) {
         {blogTranslations ? blogTranslations("blogs") : "Loading..."}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {blogData.map((blog: any) => (
+        {blogData.map((blog: BlogPost) => (
           <BlogPostCard key={blog.id} blog={blog} lang={lang} />
         ))}
       </div>
