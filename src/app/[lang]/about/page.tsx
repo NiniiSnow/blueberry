@@ -5,7 +5,7 @@ import ImageSwiper from "@/components/ui/ImageSwiper";
 
 type AboutPageProps = {
   params: Promise<{ lang: string }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: Promise<any> | undefined;
 };
 
 export default async function AboutPage({ params }: AboutPageProps) {
