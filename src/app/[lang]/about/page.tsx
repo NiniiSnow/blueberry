@@ -4,10 +4,8 @@ import ImageSwiper from "@/components/ui/ImageSwiper";
 // import Map from '@/components/ui/Map';
 
 type AboutPageProps = {
-  params: {
-    lang: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ lang: string }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 export default async function AboutPage({ params }: AboutPageProps) {
