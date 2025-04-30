@@ -16,8 +16,13 @@ async function getBlogPost(lang: string, id: string) {
   return res.json();
 }
 
-export default async function BlogPostPage({ params }: { params: { lang: string; id: string } }) {
-  const { lang, id } = params;
+type BlogPostPageProps = {
+  params: Promise<{ lang: string; id: string }>,
+  searchParams?: Promise<string> | undefined
+};
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { lang, id } = await params;
   const blog: BlogPost = await getBlogPost(lang, id);
 
   return (

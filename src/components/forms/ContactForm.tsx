@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { sendContactForm } from '@/services/contact';
 
-export default function ContactForm() {  // removed lang parameter
+export default function ContactForm() {  
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');

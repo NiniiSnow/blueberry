@@ -2,7 +2,12 @@ import { getServerTranslation } from "@/utils/getServerTranslation";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Home({ params }: { params: { lang: string } }) {
+type HomePageProps = {
+  params: Promise<{ lang: string }>;
+  searchParams?: Promise<string> | undefined;
+};
+
+export default async function Home({ params }: HomePageProps) {
   const { lang } = await params;
   const homeText = await getServerTranslation(lang, "common");
   
@@ -78,19 +83,4 @@ export default async function Home({ params }: { params: { lang: string } }) {
   );
 }
 
-export function RecipeCard(){
-  return(
-    <div className="flex flex-col gap-4  rounded-lg  p-4 max-w-sm w-full">
-      <Image
-      src={"/images/blueberry-pie.webp"}
-      width={200}
-      height={300}
-      alt="Recipe image"
-      className="rounded-lg object-cover h-[300px] min-w-[200px]"
-      loading="lazy"
-      priority={false}
-      ></Image>
-      <h3 className="text-lg font-semibold text-blue-main">Recipe Title</h3>
-    </div>
-  )
-}
+

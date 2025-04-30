@@ -2,7 +2,12 @@ import BlogPostCard from "@/components/ui/BlogPostCard";
 import { BlogPost } from "@/types/blog";
 import { getServerTranslation } from "@/utils/getServerTranslation";
 
-export default async function Blog({ params }: { params: { lang: string } }) {
+type BlogMainPageProps = {
+  params: Promise<{ lang: string; id: string }>,
+  searchParams?: Promise<string> | undefined
+};
+
+export default async function Blog({ params }: BlogMainPageProps) {
   const { lang } = await params;
   const blogData:BlogPost[] = await GetBlogs(lang);
   const blogTranslations = await getServerTranslation(lang, "common");

@@ -2,7 +2,13 @@ import { getServerTranslation } from "@/utils/getServerTranslation";
 import ContactForm from "@/components/forms/ContactForm";
 import Image from "next/image";
 
-export default async function Contact({ params }: { params: { lang: string } }) {
+type Contactparams = {
+  params: Promise<{ lang: string }>;
+  searchParams?: Promise<string> | undefined;
+};
+
+
+export default async function Contact({ params }: Contactparams ) {
   const { lang } = await params;
   const contactText = await getServerTranslation(lang, "common");
 
@@ -64,7 +70,7 @@ export default async function Contact({ params }: { params: { lang: string } }) 
           {/* Contact Form */}
           <div className="lg:w-1/2 w-full">
             <div className="bg-white rounded-lg shadow-xl p-8">
-              <ContactForm lang={lang} />
+              <ContactForm />
             </div>
           </div>
         </div>
