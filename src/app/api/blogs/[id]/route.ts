@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { blogs } from '../route'; // Import the blogs data
+import { blogs } from '@/data/blogs';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = params.id;
+  const { id } = await params;
   const acceptLang = (request.headers.get('accept-language')?.split(',')[0].split('-')[0] || 'en') as keyof typeof blogs;
   
   const languageBlogs = blogs[acceptLang] || blogs.en;

@@ -2,17 +2,18 @@ import React, { ReactElement } from "react";
 import Layout from "@/components/layout/Layout";
 import TranslationProvider from "@/components/provider/TranslatorProvider";
 
-export default function LangLayout({
+export default async function LangLayout({
   children,
   params,
 }: Readonly<{
   children: ReactElement<{ lang: string }>;
   params: { lang: string }; 
 }>) {
+  const { lang } = await params
   return (
-    <TranslationProvider lang={params.lang}>
-      <Layout language={params.lang}>
-        {React.cloneElement(children, { lang: params.lang })}
+    <TranslationProvider lang={lang}>
+      <Layout language={lang}>
+        {React.cloneElement(children, { lang })}
       </Layout>
     </TranslationProvider>
   );
