@@ -8,11 +8,14 @@ export type ContactFormData = {
 };
 
 export async function sendContactForm(data: ContactFormData) {
-  const response = await fetch(`${BASE_URL}${API_URLS.CONTACT}`, {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const response = await fetch(`${baseUrl}/api/contact`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify(data),
   });
 
