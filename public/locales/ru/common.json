@@ -27,6 +27,7 @@
     "explore" : "Исследовать",
     "topRecipes" : "Лучшие рецепты",
     "blogs" : "Блоги",
+    "noBlogs" : "Блоги недоступны",
     "firstName" : "Имя",
     "firstNamePlaceholder" : "Введите ваше имя",
     "lastName" : "Фамилия",

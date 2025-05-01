@@ -3,13 +3,13 @@ import { BlogPost } from "@/types/blog";
 import { getServerTranslation } from "@/utils/getServerTranslation";
 
 type BlogMainPageProps = {
-  params: Promise<{ lang: string; id: string }>,
-  searchParams?: Promise<string> | undefined
+  params: Promise<{ lang: string }>;
+  searchParams?: Promise<string> | undefined;
 };
 
 export default async function Blog({ params }: BlogMainPageProps) {
   const { lang } = await params;
-  const blogData:BlogPost[] = await GetBlogs(lang);
+  const blogData: BlogPost[] = await GetBlogs(lang);
   const blogTranslations = await getServerTranslation(lang, "common");
 
   return (
@@ -17,27 +17,47 @@ export default async function Blog({ params }: BlogMainPageProps) {
       <h1 className="text-3xl font-bold text-center py-8">
         {blogTranslations ? blogTranslations("blogs") : "Loading..."}
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {blogData.map((blog: BlogPost) => (
-          <BlogPostCard key={blog.id} blog={blog} lang={lang} />
-        ))}
-      </div>
+      {
+        blogData.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {blogData.map((blog) => (
+              <BlogPostCard
+                key={blog.id}
+                blog={blog}
+                lang={lang} // Pass the lang prop to BlogPostCard
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-center text-gray-500 py-8">
+            {blogTranslations ? blogTranslations("noBlogs") : "No blogs available."}
+          </p>
+        )
+      }
     </div>
-  )
+    
+  );
 }
 
 async function GetBlogs(lang: string) {
-  const res = await fetch(`http://localhost:3000/api/blogs`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept-Language": lang,
-    },
-  });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  try {
+    const res = await fetch(`${baseUrl}/api/blogs`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Language": lang,
+      },
+      next: { revalidate: 3600 } 
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error('Failed to fetch blogs:', error);
+    return []; 
   }
-
-  return res.json();
 }

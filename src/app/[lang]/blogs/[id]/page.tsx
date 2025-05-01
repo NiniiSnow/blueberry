@@ -2,11 +2,12 @@ import { BlogPost } from "@/types/blog";
 import Image from "next/image";
 
 async function getBlogPost(lang: string, id: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
   const res = await fetch(`${baseUrl}/api/blogs/${id}`, {
     headers: {
       'Accept-Language': lang
-    }
+    },
+    next: { revalidate: 3600 } // Optional: cache for 1 hour
   });
   
   if (!res.ok) {
