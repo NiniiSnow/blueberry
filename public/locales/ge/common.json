@@ -28,6 +28,7 @@
     "explore" : "გამოიკვლიე",
     "topRecipes" : "ტოპ რეცეპტები",
     "blogs" : "ბლოგები",
+    "noBlogs" : "ბლოგები არ არის ხელმისაწვდომი",
     "firstName" : "სახელი",
     "firstNamePlaceholder" : "შეიყვანეთ თქვენი სახელი",
     "lastName" : "გვარი",

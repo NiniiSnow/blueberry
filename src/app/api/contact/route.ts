@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const emailTo = process.env.EMAIL_TO || 'blueberrygardens2021@gmail.com';
+
 export async function POST(req: Request) {
   try {
     const { firstName, lastName, email, message } = await req.json();
@@ -27,8 +30,8 @@ export async function POST(req: Request) {
       await transporter.verify(); // Verify connection configuration
       await transporter.sendMail({
         from: email,
-        to: 'blueberrygardens2021@gmail.com',
-        subject: `New Contact Form Message from ${firstName} ${lastName}`,
+        to: emailTo,
+        subject: `[${baseUrl}] New Contact Form Message from ${firstName} ${lastName}`,
         text: message,
         html: `
           <h3>New Contact Form Submission</h3>

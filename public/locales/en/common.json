@@ -28,6 +28,7 @@
   "explore" : "Explore",
   "topRecipes" : "Top Recipes",
   "blogs" : "Blogs",
+  "noBlogs" : "No blogs available",
   "firstName" : "First Name",
   "firstNamePlaceholder" : "Enter you first name",
   "lastName" : "Last Name",
