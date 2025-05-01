@@ -4,7 +4,7 @@ import { getServerTranslation } from "@/utils/getServerTranslation";
 
 type BlogMainPageProps = {
   params: Promise<{ lang: string }>;
-  searchParams?: Promise<any>;
+  searchParams?: Promise<string> | undefined;
 };
 
 export default async function Blog({ params }: BlogMainPageProps) {
