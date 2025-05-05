@@ -11,17 +11,7 @@ type AboutPageProps = {
 export default async function AboutPage({ params }: AboutPageProps) {
   const { lang } = await params;
   const aboutText = await getServerTranslation(lang, "common");
-  
-  const images = [
-    {
-      src: "/images/cxunkur.webp",
-      alt: "Blueberry field from above"
-    },
-    {
-      src: "/images/blueberry_in_hands.webp",
-      alt: "Blueberry field"
-    },
-  ];
+ 
 
   return (
       <div className="min-h-screen w-full">
@@ -136,7 +126,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                   </div>
                   <div className="w-1/2 flex justify-center items-center">
 
-                    <ImageSwiper images={images} />
+                    <ImageSwiper />
                   </div>
               </div>
           </section>

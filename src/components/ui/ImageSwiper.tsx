@@ -4,19 +4,23 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 
-// Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Images } from '@/types/about';
+import { useEffect, useState } from 'react';
 
-interface ImageSliderProps {
-  images: {
-    src: string;
-    alt: string;
-  }[];
-}
 
-export default function ImageSwiper({ images }: ImageSliderProps) {
+export default function ImageSwiper() {
+  const [images, setImages] = useState<Images[]>([]);
+
+  useEffect(() => {
+    fetch('/images.json')
+      .then((res) => res.json())
+      .then((data) => setImages(data.images));
+  }, []);
+
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -34,8 +38,8 @@ export default function ImageSwiper({ images }: ImageSliderProps) {
         <SwiperSlide key={index}>
           <div className="relative w-full h-full">
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={image.url}
+              alt={image.description}
               fill
               className="object-cover"
               priority={index === 0}
