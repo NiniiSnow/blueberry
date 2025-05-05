@@ -2,7 +2,10 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: ['blueberrygardens.ge'],
+    domains: [
+      'imagedelivery.net',
+      'blueberrygardens.ge',
+    ],
   },
   headers: async () => [
     {

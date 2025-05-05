@@ -4,6 +4,17 @@ import nodemailer from 'nodemailer';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 const emailTo = process.env.EMAIL_TO || 'blueberrygardens2021@gmail.com';
 
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Accept-Language',
+    },
+  });
+}
+
 export async function POST(req: Request) {
   try {
     const { firstName, lastName, email, message } = await req.json();
