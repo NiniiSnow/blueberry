@@ -1,6 +1,25 @@
 import React, { ReactElement } from "react";
 import Layout from "@/components/layout/Layout";
 import TranslationProvider from "@/components/provider/TranslatorProvider";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: {
+      template: '%s | Blueberry Gardens',
+      default: 'Blueberry Gardens',
+    },
+    description: 'Blueberry farm in Georgia',
+    alternates: {
+      canonical: '/',
+      languages: {
+        'en': '/en',
+        'ka': '/ge',
+        'ru': '/ru',
+      },
+    },
+  };
+}
 
 export default async function LangLayout({
   children,
