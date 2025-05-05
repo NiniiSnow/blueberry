@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const defaultLocale = 'en';
-const locales = ['en', 'ge', 'ru'];
-
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/api')) {
     const response = NextResponse.next();
@@ -13,18 +10,9 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  if (request.nextUrl.pathname === '/') {
-    const locale = request.headers.get('accept-language')?.split(',')[0].split('-')[0] || defaultLocale;
-    const validLocale = locales.includes(locale) ? locale : defaultLocale;
-    return NextResponse.redirect(new URL(`/${validLocale}`, request.url));
-  }
-
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    '/api/:path*',
-    '/',
-  ],
+  matcher: ['/api/:path*']
 };
