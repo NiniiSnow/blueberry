@@ -1,11 +1,4 @@
-import { API_URLS, BASE_URL } from '@/constants/urls';
-
-export type ContactFormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  message: string;
-};
+import { ContactFormData } from "@/types/contact";
 
 export async function sendContactForm(data: ContactFormData) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
