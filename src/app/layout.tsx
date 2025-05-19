@@ -15,7 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Blueberry Gardens",
   description: "Blueberry farm in Georgia",
-  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({

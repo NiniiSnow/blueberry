@@ -6,7 +6,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next";
 
 
-export default function BurgerMenu(){
+export default function BurgerMenu({lang}: {lang: string}) {
     const [isOpen , openState] = useState(false);
 
     function onToggle(){
@@ -27,57 +27,63 @@ export default function BurgerMenu(){
               />
             </button>
              {
-                isOpen && <NavigationMenu/>
+                isOpen && <NavigationMenu lang={lang}/>
              }
         </div>
     )
 }
 
-export function NavigationMenu(){
+export function NavigationMenu({lang}: {lang: string}){
     const { t } = useTranslation();
 
 
     return(
         <div className="absolute top-20  left-0 bg-white w-full h-fit py-6">
-            <div>
+            {/* <div>
                 <input 
                 type="text" 
                 name="searchInput"
                 placeholder={t("search")}
                 className="w-full border rounded-md outline-none border-gray-200 h-12 py-1 px-1.5"
                 />
-            </div>
+            </div> */}
             <div className="flex flex-col justify-center items-center">
                 <Link
-                href={"/"}
+                href={`/${lang}`}
                 className="text-blue-main hover:text-green-main"
                 >
                     {t("home")}
                 </Link>
                 <Link
-                href={"/about"}
+                href={`/${lang}/about`}
                 className="text-blue-main hover:text-green-main"
                 >
-                    {t("about")}
+                    {t("aboutUs")}
                 </Link>
                 <Link
-                href={"/contact"}
+                href={`/${lang}/blogs`}
+                className="text-blue-main hover:text-green-main"
+                >
+                    {t("blog")}
+                </Link>
+                <Link
+                href={`/${lang}/contact`}
                 className="text-blue-main hover:text-green-main"
                 >
                     {t("contact")}
                 </Link>
-                <Link
+                {/* <Link
                 href={"/"}
                 className="text-blue-main hover:text-green-main"
                 >
                     {t("login")}
-                </Link>
-                <Link
+                </Link> */}
+                {/* <Link
                 href={"/"}
                 className="text-blue-main hover:text-green-main"
                 >
                    {t("shop")}
-                </Link>
+                </Link> */}
             </div>
         </div>
     )

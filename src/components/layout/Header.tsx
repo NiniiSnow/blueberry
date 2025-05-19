@@ -13,8 +13,10 @@ export default async function Header({ lang }: { lang: string }) {
         <Image
           src={"/logos/blueberry-logo.svg"}
           width={250}
-          height={250}
+          height={78}
           alt="main logo blueberry"
+          priority={true}
+          loading="eager"
         />
       </Link>
       <div className="font-semibold flex gap-8 max-md:hidden">
@@ -68,7 +70,9 @@ export default async function Header({ lang }: { lang: string }) {
           alt="cart icon"
           className="cursor-pointer max-md.hidden"
         /> */}
-        <BurgerMenu />
+        <BurgerMenu
+        lang={lang}
+        />
         <LanguageDropDown />
       </div>
     </div>
