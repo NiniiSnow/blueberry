@@ -2,14 +2,34 @@ import React, { ReactElement } from "react";
 import Layout from "@/components/layout/Layout";
 import TranslationProvider from "@/components/provider/TranslatorProvider";
 import { Metadata } from "next";
+import { getServerTranslation } from "@/utils/getServerTranslation";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const { lang } = await  params;
+  const t = await getServerTranslation(lang, "common");
+
   return {
     title: {
-      template: '%s | Blueberry Gardens',
-      default: 'Blueberry Gardens',
+      template: `%s | ${t('siteName')}`,
+      default: t('siteName'),
     },
-    description: 'Blueberry farm in Georgia',
+    description: t('description'),
+    openGraph: {
+      title: t('siteName'),
+      description: t('description'),
+      url: 'https://blueberrygardens.ge',
+      siteName: t('siteName'),
+      images: [
+        {
+          url: '/images/blueberry_garden_scene.webp',
+          width: 1200,
+          height: 630,
+          alt: t('ogImageAlt'),
+        },
+      ],
+      locale: lang,
+      type: 'website',
+    },
     alternates: {
       canonical: '/',
       languages: {

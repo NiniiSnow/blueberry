@@ -1,5 +1,8 @@
 import { BlogPost } from "@/types/blog";
 import Image from "next/image";
+import { Metadata } from "next";
+
+
 
 async function getBlogPost(lang: string, id: string) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -7,7 +10,7 @@ async function getBlogPost(lang: string, id: string) {
     headers: {
       'Accept-Language': lang
     },
-    next: { revalidate: 3600 } // Optional: cache for 1 hour
+    next: { revalidate: 3600 } 
   });
   
   if (!res.ok) {
@@ -21,6 +24,37 @@ type BlogPostPageProps = {
   params: Promise<{ lang: string; id: string }>,
   searchParams?: Promise<string> | undefined
 };
+
+export async function generateMetadata({ params }: { params: BlogPostPageProps['params'] }): Promise<Metadata> {
+  const { lang, id } = await params;
+  const blog = await getBlogPost(lang, id);
+  
+  return {
+    title: blog.title,
+    description: blog.shortDescription,
+    openGraph: {
+      title: blog.title,
+      description: blog.shortDescription,
+      type: 'article',
+      url: `https://blueberrygardens.ge/${lang}/blogs/${id}`,
+      images: [
+        {
+          url: blog.image,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+      publishedTime: blog.date,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.shortDescription,
+      images: [blog.image],
+    },
+  };
+}
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { lang, id } = await params;
