@@ -9,8 +9,9 @@ type RecipePageProps = {
   searchParams?: Promise<string>
 };
 
-export async function generateMetadata({ params }: { params: { lang: string, id: string } }): Promise<Metadata> {
-  const recipe = await getRecipe(params.id, params.lang);
+export async function generateMetadata({ params }: { params: Promise<{ lang: string; id: string }> }): Promise<Metadata> {
+  const { lang, id } = await params;
+  const recipe = await getRecipe(id, lang);
   
   return {
     title: recipe.title,
