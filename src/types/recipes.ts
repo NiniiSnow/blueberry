@@ -4,12 +4,22 @@ export interface RecipePosts {
     ru: Recipe[];
   };
   
-export interface Recipe{
-    id: string;
-    title: string;
-    shortDescription: string;
-    fullDescription: string;
-    image: string;
-    date: string;
+export interface Recipe {
+  id: string;
+  title: string;
+  shortDescription: string;
+  image: string;
+  totalTime: number;
+  servings?: number;
+  ingredients: string[];
+  instructions: string[];
+  nutrition: {
+    calories: number;
+    protein: number;
+    fat: number;
+    carbohydrates: number;
   };
-  
+  author: string;
+  date: string;
+}
+

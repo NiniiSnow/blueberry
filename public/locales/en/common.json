@@ -48,5 +48,16 @@
   "locationDescription" : "We are located in the heart of Georgia, surrounded by beautiful landscapes and fresh air. Our farm is open to visitors, and we invite you to come and see our blueberries in person.",
   "siteName": "Blueberry Gardens",
   "description": "Premium blueberry farm in Georgia offering fresh, organic blueberries",
-  "ogImageAlt": "Blueberry Gardens Farm"
+  "ogImageAlt": "Blueberry Gardens Farm",
+  "NutritionInfo": "Nutrition Information",
+  "Ingredients": "Ingredients",
+  "Instructions": "Instructions",
+  "calories": "Calories",
+  "protein": "Protein",
+  "fat": "Fat",
+  "carbohydrates": "Carbohydrates",
+  "muffins": "Muffins",
+  "smoothies": "Smoothies",
+  "iceCream": "Ice Cream",
+  "pies": "Pie"
 }

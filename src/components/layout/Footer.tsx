@@ -66,20 +66,32 @@ const footerTranslations = await getServerTranslation(lang, "common");
                 </h2>
                 <nav className="list-none mb-10">
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                    <Link
+                    href={`/${lang}/recipes/1`}>
+                      { footerTranslations("muffins")}
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                    <Link
+                    href={`/${lang}/recipes/3`}>
+                      { footerTranslations("smoothies")}
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+                    <Link
+                    href={`/${lang}/recipes/6`}>
+                      { footerTranslations("pies")}
+                    </Link>                  
                   </li>
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                    <Link
+                    href={`/${lang}/recipes/2`}>
+                      { footerTranslations("iceCream")}
+                    </Link>                  
                   </li>
                 </nav>
               </div>
-              <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+              {/* <div className="lg:w-1/4 md:w-1/2 w-full px-4">
                 <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">TOP RECIPES</h2>
                 <nav className="list-none mb-10">
                   <li>
@@ -95,7 +107,7 @@ const footerTranslations = await getServerTranslation(lang, "common");
                     <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
                   </li>
                 </nav>
-              </div>
+              </div> */}
               <div className="lg:w-1/4 md:w-1/2 w-full px-4">
                 <h2 className="title-font font-semibold text-gray-900 tracking-widest text-sm mb-3">
                 { footerTranslations("contactInfo") }
