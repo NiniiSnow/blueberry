@@ -7,8 +7,8 @@ export async function sendContactForm(data: ContactFormData) {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Origin': baseUrl,
     },
-    credentials: 'include',
     body: JSON.stringify(data),
   });
 
