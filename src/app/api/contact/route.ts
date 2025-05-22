@@ -4,14 +4,27 @@ import nodemailer from 'nodemailer';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 const emailTo = process.env.EMAIL_TO || 'blueberrygardens2021@gmail.com';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Accept-Language',
-};
+const allowedOrigins = [
+  'https://blueberrygardens.ge',
+  'https://www.blueberrygardens.ge',
+  'http://localhost:3000'
+];
 
-export async function OPTIONS() {
-  return NextResponse.json({}, { headers: corsHeaders });
+function getCorsHeaders(origin: string | null) {
+  return {
+    'Access-Control-Allow-Origin': origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Accept, Accept-Language, Origin',
+    'Access-Control-Max-Age': '86400',
+  };
+}
+
+export async function OPTIONS(req: Request) {
+  const origin = req.headers.get('origin');
+  return new NextResponse(null, {
+    status: 200,
+    headers: getCorsHeaders(origin),
+  });
 }
 
 function validateEnvVariables() {
@@ -22,6 +35,7 @@ function validateEnvVariables() {
 }
 
 export async function POST(req: Request) {
+  const origin = req.headers.get('origin');
   try {
     validateEnvVariables();
 
@@ -30,7 +44,7 @@ export async function POST(req: Request) {
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
-        { status: 400, headers: corsHeaders }
+        { status: 400, headers: getCorsHeaders(origin) }
       );
     }
 
@@ -67,7 +81,7 @@ export async function POST(req: Request) {
       });
       
       console.log('Email sent:', emailResult);
-      return NextResponse.json({ success: true }, { headers: corsHeaders });
+      return NextResponse.json({ success: true }, { headers: getCorsHeaders(origin) });
     } catch (emailError) {
       console.error('SMTP Error:', emailError);
       return NextResponse.json(
@@ -75,14 +89,14 @@ export async function POST(req: Request) {
           error: 'Email service unavailable', 
           details: emailError || 'SMTP connection failed'
         },
-        { status: 503, headers: corsHeaders }
+        { status: 503, headers: getCorsHeaders(origin) }
       );
     }
   } catch (error) {
     console.error('Configuration error:', error);
     return NextResponse.json(
       { error: 'Server configuration error' },
-      { status: 500, headers: corsHeaders }
+      { status: 500, headers: getCorsHeaders(origin) }
     );
   }
 }
