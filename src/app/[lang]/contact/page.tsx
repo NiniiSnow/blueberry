@@ -1,5 +1,4 @@
 import { getServerTranslation } from "@/utils/getServerTranslation";
-import ContactForm from "@/components/forms/ContactForm";
 import Image from "next/image";
 
 type Contactparams = {
@@ -15,7 +14,7 @@ export default async function Contact({ params }: Contactparams ) {
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
           {/* Contact Information */}
           <div className="lg:w-1/2 space-y-8">
             <div>
@@ -68,11 +67,11 @@ export default async function Contact({ params }: Contactparams ) {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:w-1/2 w-full">
+          {/* <div className="lg:w-1/2 w-full">
             <div className="bg-white rounded-lg shadow-xl p-8">
               <ContactForm />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
