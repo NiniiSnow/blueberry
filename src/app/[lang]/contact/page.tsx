@@ -1,5 +1,4 @@
 import { getServerTranslation } from "@/utils/getServerTranslation";
-import ContactForm from "@/components/forms/ContactForm";
 import Image from "next/image";
 
 type Contactparams = {
