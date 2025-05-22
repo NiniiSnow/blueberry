@@ -12,6 +12,7 @@ type RecipePageProps = {
 export async function generateMetadata({ params }: { params: Promise<{ lang: string; id: string }> }): Promise<Metadata> {
   const { lang, id } = await params;
   const recipe = await getRecipe(id, lang);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://blueberrygardens.ge';
   
   return {
     title: recipe.title,
@@ -19,8 +20,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     openGraph: {
       title: recipe.title,
       description: recipe.shortDescription,
-      images: [{ url: recipe.image, width: 1200, height: 630 }],
-    }
+      type: 'article',
+      url: `${baseUrl}/${lang}/recipes/${id}`,
+      images: [{
+        url: recipe.image,
+        width: 1200,
+        height: 630,
+        alt: recipe.title,
+        type: 'image/webp',
+      }],
+      siteName: 'Blueberry Gardens',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: recipe.title,
+      description: recipe.shortDescription,
+      images: [recipe.image],
+    },
   };
 }
 
