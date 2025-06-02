@@ -6,8 +6,7 @@ type Contactparams = {
   searchParams?: Promise<string> | undefined;
 };
 
-
-export default async function Contact({ params }: Contactparams ) {
+export default async function Contact({ params }: Contactparams) {
   const { lang } = await params;
   const contactText = await getServerTranslation(lang, "common");
 
@@ -40,7 +39,11 @@ export default async function Contact({ params }: Contactparams ) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <a 
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://wa.me/995592094883"
+              className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
                   <Image src="/icons/phone_white.svg" width={24} height={24} alt="Phone" />
                 </div>
@@ -48,11 +51,20 @@ export default async function Contact({ params }: Contactparams ) {
                   <h3 className="font-semibold text-blue-main">
                     {contactText ? contactText("phone") : "Phone"}
                   </h3>
-                  <p className="text-gray-600">+995 568 20 99 33</p>
+                  <p
+                    className="text-gray-600 hover:text-green-600 transition-colors cursor-pointer"
+                  >
+                    +995 592 09 48 83
+                  </p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-4">
+              <a 
+                href="mailto:blueberrygardens2021@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4"
+              >
                 <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
                   <Image src="/icons/email_white.svg" width={24} height={24} alt="Email" />
                 </div>
@@ -60,9 +72,32 @@ export default async function Contact({ params }: Contactparams ) {
                   <h3 className="font-semibold text-blue-main">
                     {contactText ? contactText("email") : "Email"}
                   </h3>
-                  <p className="text-gray-600">blueberrygardens2021@gmail.com</p>
+                  <p className="text-gray-600 hover:text-blue-600 transition-colors">
+                    blueberrygardens2021@gmail.com
+                  </p>
                 </div>
-              </div>
+              </a>
+
+              <a 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4"
+              href="https://www.facebook.com/share/14yDahunSH/?mibextid=wwXIfr" 
+              >
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                  <span className="inline-flex text-white hover:text-blue-600 transition-colors">
+                      <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                      </svg>
+                    </span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-blue-main">
+                    Facebook
+                  </h3>
+                  <p className="text-gray-600">Blueberry Gardens</p>
+                </div>
+              </a>
             </div>
           </div>
 

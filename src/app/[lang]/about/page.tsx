@@ -115,8 +115,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
           {/* Gallery Section */}
           <section>
-              <div className="flex">
-                  <div className="w-1/2 ">
+              <div className="flex flex-col md:flex-row w-full">
+                  <div className="md:w-1/2 ">
                     <h2 className="text-3xl md:text-4xl font-bold text-blue-main text-center my-12">
                         {aboutText ? aboutText("gallery") : "Our Gallery"}
                     </h2>
@@ -124,7 +124,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                         {aboutText("galleryDescription")}
                     </p>
                   </div>
-                  <div className="w-1/2 flex justify-center items-center">
+                  <div className="md:w-1/2 flex justify-center items-center">
 
                     <ImageSwiper />
                   </div>
@@ -144,7 +144,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                   {/* <div className="rounded-lg overflow-hidden shadow-xl">
                       <Map />
                   </div> */}
-                  <div className="grid md:grid-cols-2 gap-8 mt-12">
+                  {/* <div className="grid md:grid-cols-2 gap-8 mt-12">
                       <div className="text-center p-6 bg-white rounded-lg shadow-md">
                           <h3 className="text-xl font-semibold text-blue-main mb-2">Cxunkuri</h3>
                           <p className="text-gray-600">
@@ -157,7 +157,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
                               {aboutText ? aboutText("potiAddress") : "Ternali"}
                           </p>
                       </div>
-                  </div>
+                  </div> */}
               </div>
           </section>
       </div>
