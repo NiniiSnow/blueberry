@@ -114,13 +114,21 @@ const footerTranslations = await getServerTranslation(lang, "common");
                 </h2>
                 <nav className="list-none mb-10">
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">+995 568 20 99 33</a>
+                    <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://wa.me/995592094883"
+                    className="text-gray-600 hover:text-gray-800">
+                      +995 592 09 48 83
+                    </a>
                   </li>
                   <li>
                     <a className="text-gray-600 hover:text-gray-800">blueberrygardens2021@gmail.com</a>
                   </li>
                   <li>
-                    <a className="text-gray-600 hover:text-gray-800">Tsklatubo</a>
+                    <a className="text-gray-600 hover:text-gray-800">
+                      {footerTranslations ? footerTranslations("tskaltubo") : "Tskaltubo" }
+                    </a>
                   </li>
                 </nav>
               </div>
