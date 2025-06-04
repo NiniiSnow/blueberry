@@ -94,15 +94,15 @@ export default async function RecipePage({ params }: RecipePageProps) {
             </div>
             <div  className="text-center">
               <p className="font-semibold text-blue-main">{ recipeTranslations('protein')}</p>
-              <p className="text-sm text-gray-600">{recipe.nutrition.calories}</p>
+              <p className="text-sm text-gray-600">{recipe.nutrition.protein}</p>
             </div>
             <div  className="text-center">
               <p className="font-semibold text-blue-main">{ recipeTranslations('fat')}</p>
-              <p className="text-sm text-gray-600">{recipe.nutrition.calories}</p>
+              <p className="text-sm text-gray-600">{recipe.nutrition.fat}</p>
             </div>
             <div  className="text-center">
               <p className="font-semibold text-blue-main">{ recipeTranslations('carbohydrates')}</p>
-              <p className="text-sm text-gray-600">{recipe.nutrition.calories}</p>
+              <p className="text-sm text-gray-600">{recipe.nutrition.carbohydrates}</p>
             </div>
         </div>
       </div>
